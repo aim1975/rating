@@ -1,0 +1,22 @@
+<%= form_for(@firm) do |f| %>
+  <% if @firm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@firm.errors.count, "error") %> никуя не получилось сохранить в базе:</h2>
+
+      <ul>
+      <% @firm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Добавляй уже нах' %>
+  </div>
+<% end %>

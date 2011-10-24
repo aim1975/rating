@@ -1,0 +1,33 @@
+<%= form_for(@firm) do |f| %>
+  <% if @firm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@firm.errors.count, "error") %> prohibited this firm from being saved:</h2>
+
+      <ul>
+      <% @firm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= radio_button_tag(:rating, 5) %>
+  <%= label_tag(:recommend_5, "Ахуительно") %>
+  <br>
+  <%= radio_button_tag(:rating, 4) %>
+  <%= label_tag(:recommend_4, "Пиздато") %>
+  <br>
+  <%= radio_button_tag(:rating, 3) %>
+  <%= label_tag(:recommend_4, "Хуеватенько") %>
+  <br>
+  <%= radio_button_tag(:rating, 2) %>
+  <%= label_tag(:recommend_4, "Уебищно") %>
+  <br>
+  <%= radio_button_tag(:rating, 1) %>
+  <%= label_tag(:recommend_4, "Ни в пизду, ни в Красную Армию") %>
+  <br>
+
+  <div class="actions">
+    <%= f.submit 'Я так думаю!' %>
+  </div>
+<% end %>
