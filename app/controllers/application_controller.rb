@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
   # added some comments to app controller
   #more comments
   #one more comment
+  # comment 2
 end
