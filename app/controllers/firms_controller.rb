@@ -5,6 +5,7 @@ class FirmsController < ApplicationController
   # GET /firms.json
   def index
     @firms = Firm.all
+    @firm = Firm.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,7 +31,7 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @firm }
+      format.json { render json: @firms }
     end
 
   end
@@ -47,8 +48,11 @@ class FirmsController < ApplicationController
 
     respond_to do |format|
       if @firm.save
-        format.html { redirect_to @firm, notice: 'Хуясе, новую фирму добавили в натуре' }
-        format.json { render json: @firm, status: :created, location: @firm }
+        #format.html { redirect_to @firm, notice: 'Хуясе, новую фирму добавили в натуре' }
+        #format.json { render json: @firm, status: :created, location: @firm }
+        format.html { redirect_to firms_url }
+        format.js
+        #format.json { head :ok }
       else
         format.html { render action: "new" }
         format.json { render json: @firm.errors, status: :unprocessable_entity }
@@ -81,11 +85,13 @@ class FirmsController < ApplicationController
   # DELETE /firms/1.json
   def destroy
     @firm = Firm.find(params[:id])
+    @nametodel = @firm.name
     @firm.destroy
 
     respond_to do |format|
       format.html { redirect_to firms_url }
-      format.json { head :ok }
+      format.js
     end
+
   end
 end

@@ -1,23 +1,16 @@
 <h1>Список фирм-исполнителей епта</h1>
 
-<table>
-  <tr>
-    <th>Вот они все типа:</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @firms.each do |firm| %>
-  <tr>
-    <td><%= firm.name  %></td>
-    <td><%= '   Средняя оценка:   ' + firm.Recommendations.average(:rating).to_s %></td>
-    <td><%= link_to '   Дать оценку   ', edit_firm_path(firm) %></td>
-    <td><%= link_to '   Нахуй его   ', firm, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+
+<ul id="subject_list">
+<% @firms.each do |c| %>
+
+<!-- <li><%= link_to c.name, :action => 'edit', :id => c.id %> <%= link_to "Накуй его", c, method: :delete, :id => c.id %></li>    -->
+<%= render 'firm2', :cc=>c %>
+
 <% end %>
-</table>
+</ul>
 
 <br />
 
-<%= link_to 'Накидать еще исполнителей', new_firm_path %>
+<%= render 'form'  %>
